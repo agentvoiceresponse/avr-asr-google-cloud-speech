@@ -1,0 +1,15 @@
+{
+  "name": "avr-asr-google-cloud-speech",
+  "version": "1.0.0",
+  "author": "Giuseppe Careri",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "@google-cloud/speech": "^6.7.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0"
+  }
+}
