@@ -20,7 +20,7 @@ jobs:
           id: build-docker-image
           run: |
             ls -la 
-            docker build --platform=linux/amd64 -t ${{secrets.DOCKERHUB_USERNAME}}/avr-asr-google-cloud-speech:latest -t ${{secrets.DOCKERHUB_USERNAME}}/avr-asr-google-cloud-speech:${npm_package_version} .
+            docker build --platform=linux/amd64 -t agentvoiceresponse/avr-asr-google-cloud-speech:latest -t agentvoiceresponse/avr-asr-google-cloud-speech:${npm_package_version} .
         - name: push the docker image
           id: push-docker-image
-          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/avr-asr-google-cloud-speech:latest && docker push ${{secrets.DOCKERHUB_USERNAME}}/avr-asr-google-cloud-speech:${npm_package_version}
+          run: docker push agentvoiceresponse/avr-asr-google-cloud-speech:latest && docker push agentvoiceresponse/avr-asr-google-cloud-speech:${npm_package_version}
