@@ -14,13 +14,13 @@ jobs:
           env:
             username: ${{secrets.DOCKERHUB_USERNAME}}
             password: ${{secrets.DOCKERHUB_PASSWORD}}
-          run: |
-            docker login -u $username -p $password 
+          run: docker login -u $username -p $password 
+        - name: get-npm-version
+          id: package-version
+          uses: martinbeentjes/npm-get-version-action@v1.3.1
         - name: build the docker image
           id: build-docker-image
-          run: |
-            ls -la 
-            docker build --platform=linux/amd64 -t agentvoiceresponse/avr-asr-google-cloud-speech:latest -t agentvoiceresponse/avr-asr-google-cloud-speech:${npm_package_version} .
+          run: docker build -t agentvoiceresponse/avr-asr-google-cloud-speech:latest -t agentvoiceresponse/avr-asr-google-cloud-speech:${{ steps.package-version.outputs.current-version}} .
         - name: push the docker image
           id: push-docker-image
-          run: docker push agentvoiceresponse/avr-asr-google-cloud-speech:latest && docker push agentvoiceresponse/avr-asr-google-cloud-speech:${npm_package_version}
+          run: docker push agentvoiceresponse/avr-asr-google-cloud-speech:latest && docker push agentvoiceresponse/avr-asr-google-cloud-speech:${{ steps.package-version.outputs.current-version}}
