@@ -1,3 +1,9 @@
+/**
+ * index.js
+ * This file is the main entrypoint for the application.
+ * @author  Giuseppe Careri
+ * @see https://www.gcareri.com
+ */
 const express = require('express');
 const { Writable } = require('stream');
 const { SpeechClient } = require('@google-cloud/speech');
